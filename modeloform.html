@@ -1,0 +1,57 @@
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="ModeloForm.css">
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="form-wrapper">
+            <h1>Inicio do Formulario</h1>
+            <form>
+            <p><div class="form-wrapper"><p><label for="Nome">Nome:</label></p>
+            <input type="text" id="Nome" name="Nome" placeholder="Digite seu nome"required><br><br>
+            </div>
+
+            <p><div class="form-wrapper"><p><label for="email">E-mail:</label></p>
+            <input type="email" name="email" id="email"placeholder="Digite seu email"><br><br>   
+            </div>
+
+            <div class="form-wrapper"><p><label for="Password">Senha</label></p>
+            <input type="password" id="senha" placeholder="Digite sua senha" required><br><br>
+            </div>
+            
+            <div><p>Confirme sua senha:</p></div>
+            inp-
+
+            <div class="input-inline"><p>Turno:</p>
+            <input type="radio" name="Turno" id="Manhã" value="Manhã">
+            <label for="Manhã">Manhã</label><br>
+            <input type="radio" name="Turno" id="Tarde" value="Tarde">
+            <label for="Tarde">Tarde</label><br>
+            <input type="radio" name="Turno" id="noite" value="noite">
+            <label for="noite">Noite</label><br>
+            </div>
+
+            <div class="input-inline">
+            <p>Disciplinas de interesse: </p>
+            <input type="checkbox" name="Disciplinas" id="robotica" value="robotica">
+            <label for="robotica">Robotica</label><br>
+            <input type="checkbox" name="Disciplinas" id="programacao" value="programacao">
+            <label for="programacao">Proramação</label><br>
+            <input type="checkbox" name="Disciplinas" id="redes" value="redes">
+            <label for="redes">Redes</label><br><br>
+            </div>
+
+            <div class="input-inline"><p><label for="menssagem">Deixe sua menssagem</label></p>
+            <textarea name="menssagem" id="menssagem" rows="4" cols="40" placeholder="Deixe sua menssagem aqui..."></textarea>
+            </div>
+            
+            <p><button type="submit">Enviar</button>
+            <button type="reset">Limpar</button>
+            </p>
+            </form>
+        </div>
+    </body>
+    </html>
