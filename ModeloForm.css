@@ -1,261 +1,101 @@
-/* Variáveis de tema — fácil de ajustar para exercícios */ /* seção de variáveis CSS */
-:root{ /* início do bloco de variáveis globais */
-  --bg: #0c74fc; /* cor de fundo geral da página */
-  --card: #ffffff; /* cor de fundo do cartão/formulário */
-  --primary: #0b72ff; /* cor primária usada em focos e botões */
-  --accent: #ff6b6b; /* cor de destaque para erros/alertas */
-  --text: #1f2937; /* cor padrão do texto */
-  --muted: #6b7280; /* cor para textos menos importantes */
-  --radius: 8px; /* raio padrão dos cantos arredondados */
-  --shadow: 0 6px 18px rgba(20,30,40,0.08); /* sombra padrão para elevação */
-  --space: 16px; /* espaçamento base usado no padding/margins */
-  --transition: 180ms ease; /* duração e curva das transições */
-  --max-width: 720px; /* largura máxima do container do formulário */
-} /* fim do bloco de variáveis */
- 
-/* Reset básico */ /* normalização inicial */
-*{box-sizing: border-box} /* faz com que padding/border sejam incluídos no tamanho total */
-html, body{ /* regras para o elemento body */
-  margin:0; /* remove margem padrão do navegador */
-  font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* família de fontes preferida */
-  background: linear-gradient(180deg, #eef5ff 0%, var(--bg) 100%); /* gradiente de fundo suave */
-  color:var(--text); /* define a cor padrão do texto usando a variável */
-  -webkit-font-smoothing:antialiased; /* suaviza fonte em navegadores WebKit */
-  -moz-osx-font-smoothing:grayscale; /* suaviza fonte no macOS */
-  padding:40px 16px; /* padding externo do body */
-  display:flex; /* usa flexbox para centralizar horizontalmente o conteúdo */
-  align-items:flex-start; /* alinha itens no topo do eixo vertical */
-  justify-content:center; /* centraliza conteúdo horizontalmente */
-} /* fim das regras do body */
- 
-/* Container do formulário */ /* estilo do cartão que envolve o form */
-.form-wrapper{ /* seletor da div que envolve o formulário */
-  width:100%; /* ocupa 100% da largura disponível (limitada por max-width) */
-  max-width:var(--max-width); /* limita a largura máxima do container */
-  background:var(--card); /* define o fundo do cartão */
-  border-radius:var(--radius); /* aplica cantos arredondados */
-  box-shadow:var(--shadow); /* aplica sombra para profundidade */
-  padding:calc(var(--space)*1.5); /* padding interno calculado a partir da variável space */
-  margin:32px 0; /* margem vertical do container */
-  border:1px solid rgba(15,23,42,0.04); /* borda sutil ao redor do cartão */
-} /* fim .form-wrapper */
- 
-/* Título */ /* estilo do título dentro do card */
-.form-wrapper h1{ /* seleciona h1 dentro do .form-wrapper */
-  margin:0 0 8px 0; /* remove margem superior e aplica margem inferior de 8px */
-  font-size:1.5rem; /* tamanho da fonte do título */
-  letter-spacing:-0.01em; /* ajusta espaçamento entre letras */
-} /* fim h1 */
- 
-/* Descrição / subtítulo (se necessário) */ /* estilo opcional para subtítulos */
-.form-wrapper p.lead{ /* seleciona parágrafo com classe lead dentro do wrapper */
-  margin:0 0 18px 0; /* margens: apenas inferior */
-  color:var(--muted); /* cor suave para subtítulo */
-  font-size:0.95rem; /* tamanho de fonte levemente menor */
-} /* fim .lead */
- 
-/* Layout do formulário: grid para labels e campos quando possível */ /* cria espaçamento entre linhas do form */
-form{ /* seletor do elemento form */
-  display:grid; /* usa grid para organizar os campos */
-  gap:12px; /* define espaçamento entre as linhas/elementos do grid */
-} /* fim form */
- 
-/* Agrupar label + input em um bloco */ /* define estrutura para cada linha de formulário */
-.form-row{ /* contêiner de label + input */
-  display:flex; /* usa flexbox vertical */
-  flex-direction:column; /* empilha label e input na vertical */
-} /* fim .form-row */
- 
-/* Labels */ /* estilo das labels */
-label{ /* seletor geral para labels */
-  font-weight:600; /* texto mais negrito para destaque */
-  font-size:0.92rem; /* tamanho de fonte das labels */
-  margin-bottom:6px; /* espaçamento abaixo da label */
-  color:var(--text); /* cor do texto da label */
-} /* fim label */
- 
-/* Inputs, selects, textarea — estilo unificado */ /* padroniza aparência dos campos */
-input[type="text"],
-input[type="email"],
-input[type="password"],
-select,
-textarea{ /* seleciona os campos de entrada principais */
-  width:100%; /* ocupa toda largura do contêiner */
-  padding:10px 12px; /* espaçamento interno dos campos */
-  border-radius:6px; /* cantos arredondados dos campos */
-  border:1px solid #e6e9ef; /* borda sutil padrão */
-  background:linear-gradient(180deg,#fff,#fbfdff); /* leve gradiente interno */
-  outline: none; /* remove outline padrão do navegador */
-  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition); /* transições suaves */
-  font-size:0.96rem; /* tamanho da fonte interna */
-  color:var(--text); /* cor do texto interno */
-} /* fim inputs */
- 
-/* Placeholder */ /* cor do texto placeholder */
-::placeholder{ color: #9aa3b2; } /* define cor suave para placeholders */
- 
-/* Focus acessível */ /* estilo quando o campo recebe foco */
-input:focus,
-select:focus,
-textarea:focus{ /* aplica estilos de foco para campos editáveis */
-  border-color:var(--primary); /* muda borda para cor primária */
-  box-shadow:0 4px 18px rgba(11,114,255,0.12); /* sombra azul leve para destaque */
-} /* fim foco */
- 
-/* Indicar campo inválido (HTML5 validation) */ /* estilo quando campo inválido em foco */
-input:invalid:focus,
-textarea:invalid:focus{ /* quando inválido e em foco */
-  border-color:var(--accent); /* borda em cor de erro */
-  box-shadow:0 4px 18px rgba(255,107,107,0.12); /* sombra em tom de erro */
-} /* fim invalid-focus */
- 
-/* Pequenas dicas / ajuda / mensagens de erro */ /* estilo para textos auxiliares */
-.form-hint{ /* elemento que contém dicas ou mensagens pequenas */
-  font-size:0.85rem; /* fonte menor */
-  color:var(--muted); /* cor discreta */
-  margin-top:6px; /* espaçamento acima do hint */
-} /* fim .form-hint */
- 
-/* Select específico */ /* ajustes visuais para o elemento select */
-select{ /* seleciona o elemento select */
-  appearance:none; /* remove aparência nativa para customizar */
-  background-image:linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%); /* cria um ícone de seta com gradientes */
-  background-position: calc(100% - 18px) calc(1em + 2px), calc(100% - 13px) calc(1em + 2px); /* posição das imagens de fundo */
-  background-size:6px 6px, 6px 6px; /* tamanho das imagens de fundo */
-  background-repeat:no-repeat; /* não repetir imagens de fundo */
-  padding-right:36px; /* espaço à direita para não sobrepor o ícone */
-} /* fim select */
- 
-/* Radio e checkbox customizados */ /* layout auxiliar para inputs inline */
-.input-inline{ /* contêiner para pares input+label em linha */
-  display:flex; /* usa flex para alinhar horizontalmente */
-  align-items:center; /* centraliza verticalmente */
-  gap:8px; /* espaço entre elementos internos */
-  margin:6px 0; /* margem vertical */
-} /* fim .input-inline */
- 
-/* remover aparência padrão e criar visual custom */ /* redefine visual de inputs tipo radio/checkbox */
-input[type="radio"],
-input[type="checkbox"]{ /* seleciona radio e checkbox */
-  -webkit-appearance:none; /* remove aparência nativa em WebKit */
-  appearance:none; /* remove aparência nativa */
-  width:18px; /* largura do "quadrado" do input custom */
-  height:18px; /* altura do "quadrado" do input custom */
-  border-radius:4px; /* cantos levemente arredondados */
-  border:1.8px solid #cfd6e1; /* borda sutil */
-  display:inline-grid; /* usa grid para centralizar pseudo-elementos */
-  place-items:center; /* centraliza conteúdo interno */
-  transition:all var(--transition); /* transição suave para mudanças */
-  background:#fff; /* fundo branco */
-  cursor:pointer; /* cursor de pointer ao passar */
-} /* fim custom inputs */
- 
-/* radios circulares */ /* transforma radio em círculo */
-input[type="radio"]{ /* regra específica para radio */
-  border-radius:50%; /* torna circular */
-} /* fim radio */
- 
-/* checked states usando pseudo-elementos */ /* cria indicador interno via ::after */
-input[type="checkbox"]::after,
-input[type="radio"]::after{ /* pseudo-elementos para checked */
-  content:""; /* conteúdo vazio (apenas forma visual) */
-  width:10px; /* largura do indicador interno */
-  height:10px; /* altura do indicador interno */
-  border-radius:2px; /* cantos do indicador */
-  transform:scale(0); /* inicia oculto (escala 0) */
-  transition:transform var(--transition) ease; /* animação de escala */
-  background:var(--primary); /* cor do indicador usando a primária */
-  display:block; /* exibe como bloco para controle de tamanho */
-} /* fim pseudo-elementos */
- 
-/* para radio, circulo menor */ /* ajusta proporções do indicador para radio */
-input[type="radio"]::after{ /* pseudo-elemento específico para radio */
-  border-radius:50%; /* indicador circular */
-  width:8px; /* largura menor */
-  height:8px; /* altura menor */
-} /* fim ajuste radio */
- 
-/* quando selecionado */ /* estilo aplicado quando input está marcado */
-input[type="checkbox"]:checked,
-input[type="radio"]:checked{ /* quando marcado */
-  border-color:var(--primary); /* borda ganha cor primária */
-  background:linear-gradient(180deg,var(--primary), #0a5fe6); /* fundo com gradiente azul */
-} /* fim estado checked */
-input[type="checkbox"]:checked::after,
-input[type="radio"]:checked::after{ /* quando marcado, pseudo-elemento é escalado para aparecer */
-  transform:scale(1); /* mostra o indicador interno */
-} /* fim mostrar indicador */
- 
-/* melhorar click area */ /* torna labels clicáveis visualmente */
-label[for]{ /* labels que possuem atributo for */
-  cursor:pointer; /* cursor pointer para indicar interatividade */
-} /* fim label[for] */
- 
-/* Botões */ /* estilo do contêiner de botões */
-.form-actions{ /* contêiner dos botões de ação */
-  display:flex; /* usa flex para alinhamento horizontal */
-  gap:12px; /* espaço entre botões */
-  margin-top:8px; /* espaçamento acima dos botões */
-  flex-wrap:wrap; /* permite quebra de linha em telas pequenas */
-} /* fim .form-actions */
- 
-button[type="submit"],
-button[type="reset"]{ /* estilos comuns para ambos os botões */
-  padding:10px 14px; /* padding interno dos botões */
-  border-radius:8px; /* cantos arredondados */
-  border:0; /* remove borda padrão */
-  font-weight:600; /* texto em negrito */
-  cursor:pointer; /* cursor pointer ao passar */
-  transition:transform var(--transition), box-shadow var(--transition); /* transições para hover/efeitos */
-} /* fim botões comuns */
- 
-button[type="submit"]{ /* estilo específico do botão de submit */
-  background:var(--primary); /* fundo em cor primária */
-  color:white; /* texto branco */
-  box-shadow:0 8px 20px rgba(11,114,255,0.12); /* sombra para destaque */
-} /* fim submit */
- 
-button[type="submit"]:hover{ transform:translateY(-2px) } /* efeito de elevação ao passar o mouse */
- 
-button[type="reset"]{ /* estilo específico do botão de reset */
-  background:transparent; /* fundo transparente */
-  color:var(--muted); /* texto em cor suave */
-  border:1px solid #e6e9ef; /* borda sutil visível */
-} /* fim reset */
- 
-button[disabled]{ /* estilo quando botão desabilitado */
-  opacity:0.6; /* reduz opacidade */
-  cursor:not-allowed; /* cursor que indica ação proibida */
-} /* fim disabled */
- 
-/* Layout para campos lado-a-lado (ex: nome + email) */ /* utilitário para colunas duplas */
-.row-2{ /* classe utilitária para duas colunas */
-  display:grid; /* usa grid */
-  grid-template-columns:repeat(2,1fr); /* 2 colunas iguais */
-  gap:12px; /* espaço entre colunas */
-} /* fim .row-2 */
- 
-/* responsividade: em telas pequenas, empilhar tudo */ /* media query para mobile */
-@media (max-width:640px){ /* quando a largura máxima for 640px */
-  .row-2{ grid-template-columns:1fr } /* transforma duas colunas em uma */
-  body{ padding:20px 12px } /* reduz padding do body em telas pequenas */
-  .form-wrapper{ padding:16px } /* reduz padding do card em telas pequenas */
-} /* fim media query */
- 
-/* mensagem de sucesso/erro (usado via JS por exemplo) */ /* estilos para mensagens de status */
-.form-message{ /* contêiner genérico de mensagem */
-  padding:10px 12px; /* padding interno */
-  border-radius:6px; /* cantos arredondados */
-  font-weight:600; /* texto em negrito */
-  margin-top:6px; /* margem superior */
-} /* fim .form-message */
-.form-message.success{ background:#e9fbf0; color:#0d8a4b; border:1px solid rgba(13,138,75,0.08) } /* variante sucesso */
-.form-message.error{ background:#fff7f6; color:var(--accent); border:1px solid rgba(255,107,107,0.08) } /* variante erro */
- 
-/* pequenos ajustes estéticos */ /* notas e informações adicionais */
-small.note{ /* estilo para elementos small com classe note */
-  display:block; /* ocupa linha inteira */
-  font-size:0.82rem; /* tamanho de fonte menor */
-  color:var(--muted); /* cor discreta */
-  margin-top:6px; /* espaçamento acima */
-} /* fim small.note */
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.form-wrapper {
+  background: #fff;
+  padding: 30px;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 12px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.form-wrapper h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.form-row label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #444;
+}
+
+.section-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #444;
+}
+
+input, textarea {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+input:focus, textarea:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+}
+
+.options {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.options label {
+  font-weight: 500;
+  color: #555;
+  cursor: pointer;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.primary {
+  background: #667eea;
+  color: white;
+}
+
+.secondary {
+  background: #e0e0e0;
+  color: #333;
+}
