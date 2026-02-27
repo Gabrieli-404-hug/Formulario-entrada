@@ -1,101 +1,107 @@
-* {
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, sans-serif;
-}
+2<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="ModeloForm.css">
+  <title>Formulário</title>
+</head>
+<body>
 
-body {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-}
+<div class="form-wrapper">
+  <h1>Formulário de Inscrição</h1>
 
-.form-wrapper {
-  background: #fff;
-  padding: 30px;
-  width: 100%;
-  max-width: 420px;
-  border-radius: 12px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
+  <form>
 
-.form-wrapper h1 {
-  text-align: center;
-  margin-bottom: 25px;
-  color: #333;
-}
+    <div class="form-row">
+      <label for="nome">* Nome:</label>
+      <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+    </div>
 
-.form-row {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
-}
+    <div class="form-row">
+      <label for="email">* E-mail:</label>
+      <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+    </div>
 
-.form-row label {
-  font-weight: 600;
-  margin-bottom: 5px;
-  color: #444;
-}
+    <div class="form-row password">
+      <label for="password">* Senha:</label>
+      <div class="password-input-wrapper">
+        <input 
+          type="password" 
+          id="password"
+          name="password"
+          placeholder="Senha"
+          required
+        >
+        <button type="button" onclick="togglePassword('password')" class="toggle-password">
+          <img src="./eye-open.svg" alt="Mostrar senha" width="20" height="20">
+        </button>
+      </div>
+    </div>
 
-.section-title {
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #444;
-}
+    <div class="form-row confirmPassword">
+      <label for="confirmPassword">* Confirmar Senha:</label>
+      <div class="password-input-wrapper">
+        <input 
+          type="password" 
+          id="confirmPassword"
+          name="confirmPassword"
+          placeholder="Confirmar Senha"
+          required
+        >
+        <button type="button" onclick="togglePassword('confirmPassword')" class="toggle-password">
+          <img src="./eye-open.svg" alt="Mostrar senha" width="20" height="20">
+        </button>
+      </div>
+    </div>
 
-input, textarea {
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  outline: none;
-  transition: border 0.3s, box-shadow 0.3s;
-}
+    <div class="form-row">
+      <span class="section-title">Turno</span>
+      <div class="options">
+        <label><input type="radio" name="turno" value="manha"> Manhã</label>
+        <label><input type="radio" name="turno" value="tarde"> Tarde</label>
+        <label><input type="radio" name="turno" value="noite"> Noite</label>
+      </div>
+    </div>
 
-input:focus, textarea:focus {
-  border-color: #667eea;
-  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
-}
+    <div class="form-row">
+      <span class="section-title">Disciplinas de interesse</span>
+      <div class="options">
+        <required><label><input type="checkbox" name="disciplinas" value="robotica"> Robótica</label></required>
+        <required><label><input type="checkbox" name="disciplinas" value="programacao"> Programação</label></required>
+          <required><label><input type="checkbox" name="disciplinas" value="redes"> Redes</label></required>
+      </div>
+    </div>
 
-.options {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-}
+    <div class="form-row">
+      <label for="mensagem">Mensagem</label>
+      <textarea id="mensagem" name="mensagem" rows="4" placeholder="Deixe sua mensagem aqui..."></textarea>
+    </div>
 
-.options label {
-  font-weight: 500;
-  color: #555;
-  cursor: pointer;
-}
+    <div class="form-actions">
+      <button type="submit" class="btn primary">Enviar</button>
+      <button type="reset" class="btn secondary">Limpar</button>
+    </div>
+  </form>
+</div>
 
-.form-actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+<script>
+function togglePassword(inputId) {
+    const input = document.getElementById(inputId);
+    const button = input.nextElementSibling;
+    const img = button.querySelector('img');
+    
+    if (input.type === "password") {
+        input.type = "text";
+        img.src = "./eye.svg";
+        img.alt = "Ocultar senha";
+    } else {
+        input.type = "password";
+        img.src = "./eye-open.svg";
+        img.alt = "Mostrar senha";
+    }
 }
+</script>
 
-.btn {
-  padding: 10px 18px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: transform 0.2s, opacity 0.2s;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
-}
-
-.primary {
-  background: #667eea;
-  color: white;
-}
-
-.secondary {
-  background: #e0e0e0;
-  color: #333;
-}
+</body>
+</html>
